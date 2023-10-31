@@ -221,7 +221,7 @@ export function SpacesPage(props: ISpacesPageProperties): ReactElement {
           </>
             : <></>
           }
-          
+
 
           {props.isAdmin ? <p className="govuk-body">
             <a
@@ -292,14 +292,15 @@ export function SpacesPage(props: ISpacesPageProperties): ReactElement {
             {props.organization.quota.entity.name === 'default'
               ? 'Trial organisations have limited access to backing services'
               : 'Billable organisations have full access to backing services'}
+            (Note: For large organisations this can take up to a minute to complete, be patient and do not click more than once)
           </p>
-          
+
           {props.daysLeftInTrialPeriod ?
             <p className="govuk-body">
               Trial period{' '}
               <span className="govuk-!-font-weight-bold">
-                {props.daysLeftInTrialPeriod! <= 0 ? 'has expired' : 
-                  props.daysLeftInTrialPeriod! === 1 ? 'expires in 1 day' 
+                {props.daysLeftInTrialPeriod! <= 0 ? 'has expired' :
+                  props.daysLeftInTrialPeriod! === 1 ? 'expires in 1 day'
                   : `expires in ${props.daysLeftInTrialPeriod} days`}
               </span>.
             </p>
@@ -309,6 +310,7 @@ export function SpacesPage(props: ISpacesPageProperties): ReactElement {
           {help.conditionallyDisplay(
             props.isAdmin || props.isManager || props.isBillingManager,
             <p className="govuk-body">
+
               <a
                 href={props.linkTo('admin.statement.dispatcher', {
                   organizationGUID: props.organization.metadata.guid,
